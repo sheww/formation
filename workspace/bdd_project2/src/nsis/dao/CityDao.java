@@ -8,17 +8,15 @@ import nsis.metier.City;
 import nsis.util.JDBCManager;
 
 public class CityDao {
-	private City ci;
 	private Connection c;
 
-	public CityDao(City ce) {
+	public CityDao() {
 		super();
-		this.ci = ce;
 		this.c = JDBCManager.getConnection();
 	}
 
 
-	public void addCity()
+	public void addCity(City ci)
 	{
 		Statement statement = null;
 		try {

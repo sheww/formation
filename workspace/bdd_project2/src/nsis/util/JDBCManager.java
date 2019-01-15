@@ -54,4 +54,9 @@ public class JDBCManager {
 	{
 		return new JDBCManager().connexion;
 	}
+	
+	public void fermer() throws SQLException
+	{
+		this.connexion.close();
+	}
 }

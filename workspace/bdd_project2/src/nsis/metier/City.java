@@ -37,13 +37,12 @@ public class City {
 	public void setPostalcode(int postalcode) {
 		this.postalcode = postalcode;
 	}
-	public City( String name, String mayor, int inhabitants, int postalcode, int id) {
+	public City( String name, String mayor, int inhabitants, int postalcode) {
 		super();
 		this.name = name;
 		this.mayor = mayor;
 		this.inhabitants = inhabitants;
 		this.postalcode = postalcode;
-		this.id = id;
 	}
 	@Override
 	public String toString() {

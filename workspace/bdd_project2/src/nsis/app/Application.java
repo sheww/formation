@@ -1,5 +1,7 @@
 package nsis.app;
 
+import java.util.ArrayList;
+
 import nsis.dao.CityDao;
 import nsis.dao.PersonDao;
 import nsis.metier.City;
@@ -7,20 +9,24 @@ import nsis.metier.Person;
 
 public class Application {
 	public static void main(String[] args) {
-		City c = new City("Drancy", "Jean", 1200, 93, 1);
-		City c1 = new City("Levallois", "Marc", 1780, 92, 2);
-		Person p = new Person("jeremy", "dos santos", "toto@mail.fr", "0148327928", c);
-		Person p2 = new Person("Jack", "Dupont", "tata@mail.fr", "0606060606", c1);
-		CityDao cDao = new CityDao(c);
-		CityDao cD = new CityDao(c1);
-		PersonDao pDao = new PersonDao(p);
-		PersonDao pDao2 = new PersonDao(p2);
-		cDao.addCity();
-		cD.addCity();
+		CityDao cD = new CityDao();
+		PersonDao pDao = new PersonDao();
+		ArrayList<City> cityL = new ArrayList<City>();
+		ArrayList<Person> perL = new ArrayList<Person>();
 		try {
-			pDao.addPerson();
-			pDao2.addPerson();
-			//pDao.deletePerson(p);
+			for(int i = 0; i < 10; i++)
+			{
+				cityL.add(new City("name"+i,"maire"+i,1500+i,i+90));
+				cD.addCity(cityL.get(i));
+				for(int j = 0; j < 3; j++)
+				{
+					perL.add(new Person("Name"+j,"Prenom"+j,"mail"+i+"@mail.fr","0101010101",cityL.get(i)));
+					pDao.addPerson(new Person("Name"+j,"Prenom"+j,"mail"+(i+j)+"@mail.fr","0101010101",cityL.get(i)));
+				}
+			}
+			System.out.println(pDao.getAllPerson().size());
+			System.out.println(pDao.getAllPerson("dos santos").size());
+			pDao.PrintJointure();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
