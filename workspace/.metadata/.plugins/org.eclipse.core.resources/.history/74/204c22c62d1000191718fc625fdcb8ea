@@ -1,0 +1,26 @@
+package metier;
+
+import java.util.List;
+
+public class Pile<T> implements InterfacePile {
+	private List l;
+
+	public List getL() {
+		return l;
+	}
+
+	public void setL(List l) {
+		this.l = l;
+	}
+
+	public Pile(List l) {
+		super();
+		this.l = l;
+	}
+
+	public Pile() {
+		this.l = new LinkedList();
+	}
+	
+	
+}

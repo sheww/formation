@@ -1,0 +1,16 @@
+package app;
+
+import metier.CompteEnBanque;
+
+public class CompteEnBanqueApp2v2{
+	
+	public static void main(String[] args)
+	{
+		CompteEnBanque b = new CompteEnBanque();
+		try {
+			b.run();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,9 @@
+package nsis.util;
+
+import java.sql.Connection;
+
+public class JDBCManager {
+
+	Connection connexion;
+	
+}

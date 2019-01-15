@@ -1,0 +1,30 @@
+package metier;
+
+public class MaThread implements Runnable{
+	private int time;
+	
+	public MaThread(String name)
+	{
+		super(name)
+		time = 300;
+	}
+	
+	public MaThread(int time)
+	{
+		this.time = time;
+	}
+	 @Override
+	 public void run() {
+	  int i;
+	  for (i = 0; i < 5; i++) {
+	   System.out.println("Ma thread " + i);
+	   try {
+	    Thread.sleep(time);
+	   } catch (java.lang.InterruptedException e) {
+	    System.out.println("Interrupted !");
+	   }
+	  }
+	  System.out.println("Ma thread se termine");
+
+	 }
+	}

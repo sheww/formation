@@ -1,0 +1,28 @@
+package nsis.app;
+
+import nsis.dao.CityDao;
+import nsis.dao.PersonDao;
+import nsis.metier.City;
+import nsis.metier.Person;
+
+public class Application {
+	public static void main(String[] args) {
+		City c = new City("Drancy", "Jean", 1200, 93, 1);
+		City c1 = new City("Levallois", "Marc", 1780, 92, 2);
+		Person p = new Person("jeremy", "dos santos", "toto@mail.fr", "0148327928", c);
+		Person p2 = new Person("Jack", "Dupont", "tata@mail.fr", "0606060606", c1);
+		CityDao cDao = new CityDao(c);
+		CityDao cD = new CityDao(c1);
+		PersonDao pDao = new PersonDao(p);
+		PersonDao pDao2 = new PersonDao(p2);
+		cDao.addCity();
+		cD.addCity();
+		try {
+			pDao.addPerson();
+			pDao.updatePerson(p);
+			pDao2.addPerson();
+			//pDao.deletePerson(p);
+		} catch (Exception e) {
+		}
+	}
+}

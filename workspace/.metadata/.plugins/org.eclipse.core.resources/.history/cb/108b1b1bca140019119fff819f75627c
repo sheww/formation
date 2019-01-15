@@ -1,0 +1,30 @@
+package metier;
+
+public class CompteEnBanque{
+	private double solde;
+
+
+	public CompteEnBanque()
+	{
+		solde = 0;
+	}
+	
+	public void crediter(double montant) {
+		synchronized(this)
+		{
+			solde = solde + montant;
+		}
+	} // ﬁn de crediter
+
+	public double consulter() {
+		return solde;
+	}
+		
+	public void go() throws InterruptedException
+	{
+		this.t1.start();
+		this.t2.start();
+		t1.join();
+		t2.join();
+	}
+}

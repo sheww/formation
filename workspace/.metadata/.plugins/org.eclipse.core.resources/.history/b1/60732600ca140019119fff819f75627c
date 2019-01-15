@@ -1,0 +1,30 @@
+package app;
+
+
+import java.util.ArrayList;
+
+import metier.CompteEnBanque;
+import metier.MyThread;
+
+public class CompteEnBanqueApp{
+	private MyThread t1;
+	private MyThread t2;
+	private ArrayList<MyThread> l;
+	
+	public static void main(String[] args)
+	{
+		long debut = System.currentTimeMillis();
+		CompteEnBanque b = new CompteEnBanque();
+		l.add(new MyThread("t1",b));
+		t1 = new MyThread("t1",b);
+		t2 = new MyThread("t2", b);
+		try {
+			b.go();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Solde final : " + b.consulter());
+		long fin = System.currentTimeMillis();
+		System.out.println("Temps total d'execution : " + ((fin - debut) / 1000.0) + " secondes");
+	}
+}

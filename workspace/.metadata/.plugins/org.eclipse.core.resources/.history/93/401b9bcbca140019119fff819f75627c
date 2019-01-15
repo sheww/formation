@@ -1,0 +1,49 @@
+package app;
+
+
+import java.util.ArrayList;
+
+import metier.CompteEnBanque;
+import metier.MyThread;
+
+public class CompteEnBanqueApp{
+	private ArrayList<MyThread> l;
+	
+	public static void main(String[] args)
+	{
+		long debut = System.currentTimeMillis();
+		CompteEnBanque b = new CompteEnBanque();
+		MyThread t1 = new MyThread("t1",b);
+		MyThread t2 = new MyThread("t2",b);
+		this.l.add(t1);
+		l.add(t2);
+		try {
+			go();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Solde final : " + b.consulter());
+		long fin = System.currentTimeMillis();
+		System.out.println("Temps total d'execution : " + ((fin - debut) / 1000.0) + " secondes");
+	}
+	
+	
+	public ArrayList<MyThread> getL() {
+		return l;
+	}
+
+
+	public void setL(ArrayList<MyThread> l) {
+		this.l = l;
+	}
+
+
+	public void go() throws InterruptedException
+	{
+		for(int i = 0; i < l.size(); i++)
+		{
+			l.get(i).start();
+			l.get(i).join();
+		}
+	}
+}

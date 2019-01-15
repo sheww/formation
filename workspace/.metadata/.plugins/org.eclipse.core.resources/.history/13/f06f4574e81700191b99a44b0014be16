@@ -1,0 +1,9 @@
+package app;
+
+public class ApplicationVisiteur {
+	 public static void main (String args[]) {
+	  Visiteur visiteur = new Visiteur();
+	  visiteur.ouvrirConnexion();
+	  visiteur.fermerConnexion();
+	 }
+	}

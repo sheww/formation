@@ -1,0 +1,61 @@
+package metier;
+
+import java.util.*;
+import java.io.*;
+
+public class Dico extends HashMap<String, String> {
+   private static final long serialVersionUID = 1L;
+   private String fichierSource;
+
+   public Dico(String chemin){
+        fichierSource = chemin;
+   }
+
+
+   public void charger() throws IOException{
+	   InputStream f = new FileInputStream(this.fichierSource);
+	   InputStreamReader lecture=new InputStreamReader(f);
+	   BufferedReader buff=new BufferedReader(lecture);
+	   String contenu;
+	   while ((contenu=buff.readLine())!=null)
+	   {
+			StringTokenizer st = new StringTokenizer(contenu,"/");
+			this.put(st.nextToken(), st.nextToken());
+	   }
+	   buff.close();
+	   lecture.close();
+	   f.close();
+   }
+
+
+   public String consulter(String clef){
+
+	   try {
+		InputStream f = new FileInputStream(this.fichierSource);
+		f.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	   return "s";
+   }
+
+
+
+   public void creer(String clef,String valeur) throws IOException{
+
+     // A COMPLETER
+    
+   }
+
+   public void listerStdout(){
+
+     Iterator iterator = entrySet().iterator();
+    while (iterator.hasNext()) {
+      Map.Entry mapEntry = (Map.Entry) iterator.next();
+      System.out.println("Clé: " + mapEntry.getKey()
+      + ",Valeur :" + mapEntry.getValue());
+    }
+
+   }
+
+}

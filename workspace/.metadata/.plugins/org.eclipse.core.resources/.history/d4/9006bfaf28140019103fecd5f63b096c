@@ -1,0 +1,14 @@
+package metier;
+
+public class DicoURL extends Hashtable {
+	   URLConnection urlConnection;
+
+	   public DicoURL(String unURL) {
+	      try {
+	          URL url = new URL(unURL);
+	          urlConnection = url.openConnection();
+	      } catch(IOException e) {
+	          // A compléter
+	      }
+	   }
+	}

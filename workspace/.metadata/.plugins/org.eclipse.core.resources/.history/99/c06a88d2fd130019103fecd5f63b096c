@@ -1,0 +1,30 @@
+package metier;
+
+public class Animal implements java.io.Serializable{
+
+	private static final long serialVersionUID = 1L;
+	private String nom;
+	private String couleur;
+	
+	public Animal(String nom, String color)
+	{
+		this.nom = nom;
+		this.couleur=color;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+}

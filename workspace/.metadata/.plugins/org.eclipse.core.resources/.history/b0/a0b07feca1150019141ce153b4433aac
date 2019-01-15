@@ -1,0 +1,50 @@
+package metier;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
+public class MyThreadServ extends Thread{
+	Dico dico;
+	Socket s;
+	
+	
+	public MyThreadServ(MyServeur s)
+	{
+		serv = s;
+	}
+	
+	public void run()
+	{
+		System.out.println("Thread taking care of a new client");
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				
+			}
+}
+	
+	public void client_handle(String reponse, String requete) throws IOException
+	{
+		start();
+		BufferedWriter ecriture = new BufferedWriter(new OutputStreamWriter(serv.clientSocket.getOutputStream()));
+		BufferedReader lecture = new BufferedReader(new InputStreamReader(serv.clientSocket.getInputStream()));
+		do
+		{
+			
+			requete = lecture.readLine();
+			System.out.println("requete " + requete);
+			if ( requete == null) break;
+			reponse = serv.traiterRequete(requete);
+			System.out.println("reponse : " + reponse);
+			ecriture.write(reponse);
+			ecriture.newLine();
+			ecriture.flush();
+		}while(reponse != null);
+	}
+}

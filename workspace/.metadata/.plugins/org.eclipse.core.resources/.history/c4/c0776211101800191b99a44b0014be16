@@ -1,0 +1,16 @@
+package nsis.app;
+
+import nsis.dao.PersonDao;
+import nsis.metier.City;
+import nsis.metier.Person;
+
+public class Application {
+	public static void main(String []args)
+	{
+		Person p = new Person(93, "jeremy", "dos santos", "toto@mail.fr", "0148327928");
+		City c = new City("Drancy","Jean", 1200,93);
+		CityDao cDao = new CityDao();
+		PersonDao pDao = new PersonDao(p);
+		pDao.addPerson();
+	}
+}

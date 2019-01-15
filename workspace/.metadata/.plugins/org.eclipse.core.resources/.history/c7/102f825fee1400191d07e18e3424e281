@@ -1,0 +1,32 @@
+package metier;
+
+import java.io.IOException;
+
+public class MyThreadClient extends Thread{
+	private String name;
+	private MyClient client;
+	private String requete;
+	
+	public MyThreadClient(String name, MyClient c)
+	{
+		this.name = name;
+		client = c;
+	}
+	
+	public void run()
+	{
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println("Client dans thread " + name);
+		try {
+			client.envoyerMessage("PUT nana 0102030405");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

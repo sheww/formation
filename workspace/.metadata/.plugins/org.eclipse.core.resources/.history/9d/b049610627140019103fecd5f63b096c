@@ -1,0 +1,18 @@
+package app;
+
+import metier.MaThread;
+
+public class MonProgramme1 {
+	 public static void main(String[] args) throws Exception {
+	  new Thread(new MaThread("toto",Thread.MAX_PRIORITY)).start();;
+	  new Thread(new MaThread("tutu",300)).start();;
+	  MaThread n = new MaThread("titi",300);
+	  n.run();
+	  int i;
+	  for (i = 0; i < 5; i++) {
+	   System.out.println("La thread initiale " + i);
+	   Thread.sleep(300);
+	  }
+	  System.out.println("La thread initiale se termine");
+	 }
+	}

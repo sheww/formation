@@ -1,0 +1,85 @@
+package metier;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class MyServeur {
+	ServerSocket serverSocket;
+	Socket clientSocket;
+	Dico dico;
+	BufferedWriter ecriture ;
+	BufferedReader lecture;
+	
+	public MyServeur(int port)
+	{
+		dico = new Dico("dico.txt");
+		try {
+			dico.charger();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			serverSocket = new ServerSocket(port);
+			System.out.println("Serveur creer");
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void serveur_start()
+	{
+		String requete = "";
+		while(true)
+		{
+			try
+			{
+				String reponse = "";
+				clientSocket = serverSocket.accept();
+				System.out.println("Nouveau client est connecte " + clientSocket);
+				new MyThreadServ(this).client_handle(reponse, requete);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public String traiterRequete(String s)
+	{
+		if ( s.equals("QUIT")) return "erreur";
+		StringTokenizer st = new StringTokenizer(s," ");
+		String key = "";
+		String command = "";
+		if (st.countTokens() == 2)
+		{
+			command = st.nextToken();
+			key = st.nextToken();
+		}
+		if ( command.equals("GET"))
+		{
+			return dico.consulter(key);
+		}
+		if ( command.equals("PUT"))
+		{
+			try {
+				dico.creer(st.nextToken(delim),st.nextToken());
+				return "insertion de " + s;
+			} catch (IOException e) {
+			// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return "erreur";
+	}
+}

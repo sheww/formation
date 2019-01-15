@@ -1,0 +1,47 @@
+package metier;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class MyThreadServ extends Thread{
+	private MyServeur serv;
+	
+	public MyThreadServ(MyServeur s)
+	{
+		serv = s;
+	}
+	
+	public void run()
+	{
+		System.out.println("Thread taking care of a new client");
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				
+			}
+}
+	
+	public void client_handle(String reponse, String requete) throws IOException
+	{
+		start();
+		serv.ecriture = new BufferedWriter(new OutputStreamWriter(serv.clientSocket.getOutputStream()));
+		serv.lecture = new BufferedReader(new InputStreamReader(serv.clientSocket.getInputStream()));
+		do
+		{
+			
+			requete = serv.lecture.readLine();
+			System.out.println("requete " + requete);
+			if ( requete == null) break;
+			reponse = serv.traiterRequete(requete);
+			System.out.println("reponse : " + reponse);
+			serv.ecriture.write(reponse);
+			serv.ecriture.newLine();
+			serv.ecriture.flush();
+		}while(reponse != null);
+	}
+}

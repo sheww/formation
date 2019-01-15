@@ -1,0 +1,24 @@
+package metier;
+
+import java.util.ArrayList;
+
+public class ArrayThread {
+	private ArrayList<MyThread> l;
+	
+	public ArrayThread(int number, CompteEnBanque c)
+	{
+		for(int i=0; i < number; i++)
+		{
+			l.add(new MyThread("t"+i,c));
+		}
+	}
+	
+	public void go() throws InterruptedException
+	{
+		for(int i=0; i < l.size(); i++)
+		{
+			l.get(i).start();
+			l.get(i).join();
+		}
+	}
+}

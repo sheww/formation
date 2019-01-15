@@ -1,0 +1,29 @@
+package metier;
+
+public class CompteEnBanque{
+	private double solde;
+	private Thread t1;
+	private Thread t2;
+
+	public CompteEnBanque()
+	{
+		
+	}
+	
+	public synchronized void  crediter(double montant) {
+		solde = solde + montant;
+	} // ﬁn de crediter
+
+	public double consulter() {
+		return solde;
+	}
+	
+	public void run()
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			System.out.println(consulter());
+			crediter(123);
+		}
+	}
+}

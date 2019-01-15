@@ -1,0 +1,25 @@
+package metier;
+
+import java.io.IOException;
+
+public class MyThreadClient extends Thread{
+	private String name;
+	private MyClient client;
+	
+	public MyThreadClient(String name, MyClient c)
+	{
+		this.name = name;
+		client = c;
+	}
+	
+	public void run()
+	{
+		System.out.println("Client dans thread " + name);
+		try {
+			client.envoyerMessage("GET nana");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

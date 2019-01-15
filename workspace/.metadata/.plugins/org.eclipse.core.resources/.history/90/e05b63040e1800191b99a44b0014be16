@@ -1,0 +1,5 @@
+package nsis.dao;
+
+public class CityDAO {
+
+}

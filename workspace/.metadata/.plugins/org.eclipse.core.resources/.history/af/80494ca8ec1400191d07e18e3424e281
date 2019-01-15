@@ -1,0 +1,10 @@
+package app;
+
+import metier.MyServeur;
+
+public class ApplicationServeur{
+	 public static void main(String args[]){
+		 MyServeur s = new MyServeur(i);
+		 MyThreadServ tS = new MyThreadServ();
+	 }
+	}

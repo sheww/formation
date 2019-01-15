@@ -1,0 +1,38 @@
+package metier;
+
+public class CompteEnBanque{
+	private double solde;
+	private MyThread t1;
+	private MyThread t2;
+
+	public CompteEnBanque()
+	{
+		solde = 0;
+		t1 = new MyThread("t1",this);
+		t2 = new MyThread("t2", this);
+	}
+	
+	public synchronized void  crediter(double montant) {
+		solde = solde + montant;
+	} // ﬁn de crediter
+
+	public double consulter() {
+		return solde;
+	}
+	
+	public MyThread getMyT1()
+	{
+		return this.t1;
+	}
+	
+	public MyThread getMyT2()
+	{
+		return this.t2;
+	}
+	
+	public void run()
+	{
+		this.t2.run();
+		this.t1.start();
+	}
+}

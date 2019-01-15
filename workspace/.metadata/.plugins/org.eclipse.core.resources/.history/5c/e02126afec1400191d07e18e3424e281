@@ -1,0 +1,18 @@
+package metier;
+
+public class MyThreadClient extends Thread{
+	private String name;
+	private MyClient client;
+	
+	public MyThreadClient(String name, MyClient c)
+	{
+		this.name = name;
+		client = c;
+	}
+	
+	public void run()
+	{
+		System.out.println("Client dans thread " + name);
+		client.envoyerMessage("GET nana");
+	}
+}

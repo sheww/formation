@@ -1,0 +1,12 @@
+package metier;
+
+public class Animal implements java.io.Serializable{
+	private String nom;
+	private String couleur;
+	
+	public Animal(String nom, String color)
+	{
+		this.nom = nom;
+		this.couleur=color;
+	}
+}

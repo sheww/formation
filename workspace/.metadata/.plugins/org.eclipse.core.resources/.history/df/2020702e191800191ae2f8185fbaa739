@@ -1,0 +1,54 @@
+package nsis.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import nsis.metier.Person;
+import nsis.util.JDBCManager;
+
+public class PersonDao {
+	private Person p;
+	private Connection c;
+
+	public PersonDao(Person p) {
+		super();
+		this.p = p;
+		this.c = JDBCManager.getConnection();
+	}
+
+	public void addPerson() throws Exception {
+		Statement statement;
+		statement = c.createStatement();
+		String ordre = "INSERT INTO `person` " + "(`id_city`,`firstname`, `lastname`, `emails`, `phone`) " + "VALUES ("
+				+ p.getC().getId() + ",\"" + p.getPrenom() + "\",\"" + p.getNom() + "\",\"" + p.getEmails() + "\",\""
+				+ p.getPhone() + "\");";
+		System.out.println(ordre);
+		statement.executeUpdate(ordre);
+		statement.close();
+
+	}
+
+	public void updatePerson(Person p) throws Exception{
+		Statement statement = c.createStatement();
+		String ordre = "UPDATE person SET id_city =" + p.getC().getId() +", firstname=\"" + p.getPrenom() 
+		+ "\", lastname=\"" + p.getNom() + "\", emails=\"" + p.getEmails() + "\", phone=\"" + p.getPhone() +"\" WHERE "
+		+ "id_city =" + p.getC().getId() +" AND firstname=\"" + p.getPrenom() + "\" AND lastname=\"" + p.getNom() 
+		+ "\";";
+		statement.executeUpdate(ordre);
+		statement.close();
+		System.out.println(ordre);
+	}
+	
+	public void deletePerson(Person p) throws Exception
+	{
+		Statement statement = c.createStatement();
+		String ordre = "DELETE FROM person WHERE \"\n" + 
+				"		+ \"id_city =\" + p.getC().getId() +\" AND firstname=\\\"\" + p.getPrenom() "
+				+ "+ \"\\\" AND lastname=\\\"\" + p.getNom() \n" + 
+				"		+ \"\\\";\"";
+		statement.executeUpdate(ordre);
+		statement.close();
+		System.out.println(ordre);
+	}
+}

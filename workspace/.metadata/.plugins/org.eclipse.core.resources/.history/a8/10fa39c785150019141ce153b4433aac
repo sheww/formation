@@ -1,0 +1,22 @@
+package app;
+
+import metier.MyClient;
+
+import java.io.IOException;
+
+public class ApplicationClient {
+public static void main(String args[]) {
+ 
+  MyClient client = new MyClient("localhost",4045);
+  MyClient client2 = new MyClient("localhost",4045);
+  try {
+	client.envoyerMessage("GET paula");
+	client.envoyerMessage("QUIT");
+	client.fermer();
+	client2.fermer();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+ }
+}

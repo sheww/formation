@@ -1,0 +1,9 @@
+package nsis.metier;
+
+public class City {
+	private int id_city;
+	private String name;
+	private String mayor;
+	private int inhabitants;
+	private int postalcode;
+}

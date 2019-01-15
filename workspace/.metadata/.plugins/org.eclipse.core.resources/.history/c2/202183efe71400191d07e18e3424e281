@@ -1,0 +1,13 @@
+package app;
+
+import metier.Serveur;
+
+public class ApplicationServeur{
+	 public static void main(String args[]){
+	 if(args.length != 1){
+		 System.out.println("Erreur parametres");
+		 System.exit(0);
+	 }
+	 new Serveur(args[0]);
+	 }
+	}

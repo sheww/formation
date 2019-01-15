@@ -1,0 +1,5 @@
+package metier;
+
+public class Pile<T> implements InterfacePile {
+
+}

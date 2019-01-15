@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;java_fx_1/src/metier&apos;&#x0A;- Original project: &apos;collection1_project&apos;&#x0A;- Destination element: &apos;java_fx_1/src/metier&apos;&#x0A;- Original elements:&#x0A;     metier.InterfacePile.java&#x0A;     metier.Pile.java" description="Copy compilation units" destination="=java_fx_1/src&lt;metier" element1="/src&lt;metier{InterfacePile.java" element2="/src&lt;metier{Pile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1546851407630" units="2" version="1.0"/>
+</session>

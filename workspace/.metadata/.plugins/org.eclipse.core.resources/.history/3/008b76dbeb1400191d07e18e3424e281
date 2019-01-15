@@ -1,0 +1,18 @@
+package metier;
+
+public class MyThreadClient extends Thread{
+	private String name;
+	private MyClient client
+	
+	public MyThreadServ(String name, MyServeur s)
+	{
+		this.name = name;
+		serv = s;
+	}
+	
+	public void run()
+	{
+		System.out.println("Lancement du serveur dans la socket " + name);
+		serv.serveur_start();
+	}
+}

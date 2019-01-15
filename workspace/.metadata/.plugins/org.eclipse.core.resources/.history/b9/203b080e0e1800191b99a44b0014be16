@@ -1,0 +1,45 @@
+package nsis.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import nsis.metier.Person;
+import nsis.util.JDBCManager;
+
+public class CityDao {
+	private Person p;
+	private Connection c;
+
+	public PersonDao(Person p) {
+		super();
+		this.p = p;
+		this.c = JDBCManager.getConnection();
+	}
+
+
+	public void addPerson()
+	{
+		Statement statement = null;
+		try {
+			statement = c.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		   // Construction de l'ordre SQL
+		   String ordre = "INSERT INTO `person` "
+		   		+ "(`id_city`, `firstname`, `lastname`, `emails`, `phone`) "
+		   		+ "VALUES ( "+ p.getId_city() +",\"" + p.getPrenom() + "\",\"" + p.getNom()
+		   		+ "\",\"" + p.getEmails() + "\",\"" + p.getPhone() + "\");";
+		   System.out.println(ordre);
+		   // Exécution de l'ordre SQL
+		   try {
+			statement.executeUpdate(ordre);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		   
+	}
+}

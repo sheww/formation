@@ -1,0 +1,5 @@
+package nsis.util;
+
+public class JDBCManager {
+
+}

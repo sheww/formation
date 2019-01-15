@@ -1,0 +1,18 @@
+package app;
+
+import metier.MyServeur;
+import metier.MyThreadServ;
+
+public class ApplicationServeur{
+	 public static void main(String args[]){
+		 MyServeur s = new MyServeur(4035);
+		 MyThreadServ tS = new MyThreadServ("toto serv1", s);
+		 MyServeur s1 = new MyServeur(4036);
+		 MyThreadServ tS1 = new MyThreadServ("toto serv2", s1);
+		 MyServeur s2 = new MyServeur(4037);
+		 MyThreadServ tS2 = new MyThreadServ("toto serv3", s2);
+		 tS.start();
+		 tS1.start();
+		 tS2.start();
+	 }
+	}

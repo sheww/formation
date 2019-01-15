@@ -1,0 +1,12 @@
+package app;
+
+import metier.MyServeur;
+
+public class ApplicationServeur{
+	 public static void main(String args[]){
+		 for(int i = 0; i < 3; i ++)
+		 {
+			 
+		 }
+	 }
+	}

@@ -1,0 +1,22 @@
+package metier;
+
+public class CompteEnBanque{
+	private double solde;
+
+
+	public CompteEnBanque()
+	{
+		solde = 0;
+	}
+	
+	public void crediter(double montant) {
+		synchronized(this)
+		{
+			solde = solde + montant;
+		}
+	} // ﬁn de crediter
+
+	public double consulter() {
+		return solde;
+	}
+}

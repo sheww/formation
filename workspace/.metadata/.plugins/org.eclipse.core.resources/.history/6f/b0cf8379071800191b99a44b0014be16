@@ -1,0 +1,10 @@
+package nsis.metier;
+
+public class Person {
+	private int id_person;
+	private int id_city;
+	private String nom;
+	private String prenom;
+	private String emails;
+	private String phone;
+}

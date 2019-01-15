@@ -1,0 +1,5 @@
+package nsis.metier;
+
+public class Person {
+
+}

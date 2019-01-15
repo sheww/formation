@@ -1,0 +1,33 @@
+package metier;
+
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Hashtable;
+
+public class DicoURL extends Hashtable {
+	   URLConnection urlConnection;
+
+	   public DicoURL(String unURL) {
+	      try {
+	          URL url = new URL(unURL);
+	          urlConnection = url.openConnection();
+	      } catch(IOException e) {
+	          System.out.println(e);
+	      }
+	   }
+	   
+	   public void info() { 
+
+		   System.out.println("Type de doc : " + urlConnection.getContentType()); 
+
+		   System.out.println("Taille du doc : " + urlConnection.getContentLength()); 
+
+		   System.out.println("Droit lecture : " + urlConnection.getDoInput()); 
+
+		   System.out.println("Droit écriture: " + urlConnection.getDoOutput());
+
+		 }
+	   
+	   
+	}

@@ -1,0 +1,24 @@
+package app;
+
+
+import metier.CompteEnBanque;
+import metier.MyThread;
+
+public class CompteEnBanqueApp{
+	private MyThread t1;
+	private MyThread t2;
+	
+	public static void main(String[] args)
+	{
+		long debut = System.currentTimeMillis();
+		CompteEnBanque b = new CompteEnBanque();
+		try {
+			b.go();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Solde final : " + b.consulter());
+		long fin = System.currentTimeMillis();
+		System.out.println("Temps total d'execution : " + ((fin - debut) / 1000.0) + " secondes");
+	}
+}

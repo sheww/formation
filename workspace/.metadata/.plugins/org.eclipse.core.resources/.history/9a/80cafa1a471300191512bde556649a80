@@ -1,0 +1,66 @@
+
+package nsis.io;
+
+// Compléter le code
+
+public class test{
+
+private static final long serialVersionUID = 1L;
+
+public MonFichier(String nomFichier)
+
+throws IllegalArgumentException {
+ super(nomFichier);
+ if (!exists())
+  // si le fichier n'existe pas sur le système
+  throw new IllegalArgumentException("Fichier inexistant");
+ if (isDirectory())
+  // si c'est un répertoire
+  throw new IllegalArgumentException("C'est un répertoire");
+}
+
+       // le paramètre est le chemin d'accès au fichier de destination
+       public void copie(String destination) {
+ try {
+   File ficDest = new File(destination);
+  long taille = length();
+  if (taille > Integer.MAX_VALUE) {
+    taille = Integer.MAX_VALUE;
+    System.out.println("attention : copie des " + Integer.MAX_VALUE
+     + " premiers octets !");
+  }
+  byte[] buffer = new byte[(int) taille];
+   FileInputStream fluxLecture;
+   fluxLecture = new FileInputStream(this);
+   fluxLecture.read(buffer);
+   fluxLecture.close();
+
+  // écriture du contenu du fichier source dans le flux standard de
+  // sortie
+
+   System.out.println(new String(buffer));
+
+  // écriture du contenu du fichier source dans le fichier destination
+
+   FileOutputStream fluxEcriture;
+   fluxEcriture = new FileOutputStream(ficDest);
+   fluxEcriture.write(buffer);
+   fluxEcriture.close();
+
+ } catch (IOException e) {
+   e.printStackTrace();
+ }
+}
+
+public void info() {
+
+  System.out.println("Fichier..............." + getName());
+
+  System.out.println(" Accès en lecture " + canRead());
+
+  System.out.println(" Accès en écriture " + canWrite());
+
+  System.out.println(" Taille " + length());
+
+}
+}

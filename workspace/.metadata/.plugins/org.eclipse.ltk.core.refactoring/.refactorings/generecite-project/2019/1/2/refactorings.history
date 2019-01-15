@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Pile.java&apos; to &apos;java_fx_1/src/metier&apos;&#x0A;- Original project: &apos;generecite-project&apos;&#x0A;- Destination element: &apos;java_fx_1/src/metier&apos;&#x0A;- Original element: &apos;metier.Pile.java&apos;" description="Copy compilation unit" destination="=java_fx_1/src&lt;metier" element1="/src&lt;metier{Pile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1546851384552" units="1" version="1.0"/>
+</session>

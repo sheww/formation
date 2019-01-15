@@ -1,0 +1,56 @@
+package nsis.metier;
+
+public class Person {
+	private int id_city;
+	private String nom;
+	private String prenom;
+	private String emails;
+	private String phone;
+	
+	
+	public int getId_city() {
+		return id_city;
+	}
+	public void setId_city(int id_city) {
+		this.id_city = id_city;
+	}
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public String getEmails() {
+		return emails;
+	}
+	public void setEmails(String emails) {
+		this.emails = emails;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public Person(int id_city, String nom, String prenom, String emails, String phone) {
+		super();
+		this.id_city = id_city;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.emails = emails;
+		this.phone = phone;
+	}
+	@Override
+	public String toString() {
+		return "Person [id_city=" + id_city + ", nom=" + nom + ", prenom=" + prenom
+				+ ", emails=" + emails + ", phone=" + phone + "]";
+	}
+	
+	
+}
